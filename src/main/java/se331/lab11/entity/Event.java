@@ -30,4 +30,6 @@ public class Event {
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     List<Participant> participants = new ArrayList<>();
+    @ElementCollection
+    List<String> images;
 }
