@@ -6,7 +6,8 @@ spring:
       enabled: true
   profiles:
     active:
-      - mem
+      - db
+      - local
   datasource:
     url: jdbc:postgresql://localhost:5432/selabdb
     username: postgres
