@@ -1,6 +1,7 @@
 package se331.lab11.util;
 
 import lombok.RequiredArgsConstructor;
+import jakarta.servlet.ServletException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -50,6 +51,24 @@ public class SupabaseStorageService {
 
         Files.delete(tempFile);
         return key;
+    }
+
+    public StorageFileDto uploadImage(MultipartFile file) throws ServletException, IOException {
+        String fileName = file.getOriginalFilename();
+        if (fileName != null && !fileName.isEmpty() && fileName.contains(".")) {
+            final String extension = fileName.substring(fileName.lastIndexOf('.') + 1);
+            String[] allowedExt = {"jpg", "jpeg", "png", "gif"};
+            for (String s : allowedExt) {
+                if (extension.equals(s)) {
+                    String urlName = this.uploadFile(file);
+                    return StorageFileDto.builder()
+                            .name(urlName)
+                            .build();
+                }
+            }
+            throw new ServletException("file must be an image");
+        }
+        return null;
     }
 
     public String getPresignedUrl(String keyName) {
