@@ -22,4 +22,5 @@ public class Organizer {
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     List<Event> ownEvents = new ArrayList<>();
+    String image;
 }
