@@ -1,6 +1,7 @@
 supabase:
   storage:
     endpoint: https://wocnbawniekaxvgtfxno.storage.supabase.co/storage/v1/s3
+    endpoint_output: https://wocnbawniekaxvgtfxno.supabase.co/storage/v1/object/public/test
     bucket: test
     region: ap-northeast-1
     accessKey: 00a05fcb0f8ebbd13cc5a59bb32072ae
